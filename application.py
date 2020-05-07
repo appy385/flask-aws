@@ -6,7 +6,7 @@ from sqlalchemy.sql.expression import func
 
 @application.route('/')
 def index():
-    return "<h1>WELCOME TO FLASK-AWS APP!!</h1>"
+    return "<h1>Congratulations!!WELCOME TO FLASK-AWS APP!!</h1>"
 
 
 @application.route("/<genre>")
