@@ -1,4 +1,33 @@
 import json
+import requests
+import xml.etree.ElementTree as ElementTree
+
+def sendRequest(uri,params):
+        response = requests.get(uri,params)
+        return response
+
+def parseXML(res):
+    book_list={}
+    root = ElementTree.fromstring(res.content)
+    for child in root.iter('update'):
+        r=child.find('action')
+        if r is None:
+            continue
+        goodreads_id = ((((child.find('object')).find('book')).find('id')).text)
+        rating = (r.find('rating').text)
+        book_list[goodreads_id]=rating
+
+    return book_list
+
+def send_message(message,mail):
+    print(message['email'])
+    msg = Message(subject="feedback for bookaholics", sender='contactbookaholics@gmail.com', recipients=['contactbookaholics@gmail.com'])
+    msg.body = """
+          From: %s <%s>
+          %s
+          """ % (message['name'], message['email'], message['message'])
+    mail.send(msg)
+
 
 def books(result):
     booksList=[]

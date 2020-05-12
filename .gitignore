@@ -1,6 +1,7 @@
 venv
 
 __pycache__
+app/__pycache__
 /csv/*.csv
 
 # Elastic Beanstalk Files
