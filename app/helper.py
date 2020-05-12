@@ -43,7 +43,6 @@ def books(result):
         book['image_url'] = b[0].image_url
         booksList.append(book)
 
-    booksDict={ "bookslist": booksList}
-    booksDict = json.dumps(booksDict)
-    booksJson = json.loads(booksDict)
-    return booksJson
+    booksList = json.dumps(booksList)
+    # booksJson = json.loads(booksList)
+    return booksList
