@@ -1,4 +1,4 @@
-
+import json
 
 def books(result):
     booksList=[]
@@ -15,4 +15,6 @@ def books(result):
         booksList.append(book)
 
     booksDict={ "bookslist": booksList}
-    return booksDict
+    booksDict = json.dumps(booksDict)
+    booksJson = json.loads(booksDict)
+    return booksJson
