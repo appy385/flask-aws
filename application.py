@@ -51,10 +51,15 @@ def goodreads(username):
 
 
 #4 Get book Recommendation on basis of a bookname you enter
-@application.route('/recommend/booktitle/<bookname>')
+@application.route('/recommend/booktitle/<bookname>', methods=['POST', 'GET'])
 def recommendations_on_book_title(bookname):
     #Hound of the Baskervilles
-    uri = test_goodreads_url + bookname
+    booktitle = ''
+    if request.method=='POST':
+        booktitle = request.json['inputtitle']
+    else:
+        booktitle = bookname
+    uri = test_goodreads_url + booktitle
     response = sendRequest(uri,test_params)
     if response.status_code==200:
         return parseXML1(response)
