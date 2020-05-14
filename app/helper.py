@@ -19,9 +19,31 @@ def parseXML(res):
 
     return book_list
 
+
+def parseXML1(response):
+    root = ElementTree.fromstring(response.content)
+    count = 0;
+    booksList = []
+    for child in root.iter('book'):
+        book = {}
+        book['isbn'] = child.find('isbn').text
+        book['title'] = child.find('title').text
+        book['average_rating'] = child.find('average_rating').text
+        book['image_url'] = child.find('image_url').text
+        book['goodreads_book_id'] = child.find('id').text
+        book['authors'] =''
+        for subchild in child.iter('authors'):
+                 book['authors']  += (((subchild.find('author')).find('name')).text) + ', '
+        if count != 0 :
+            booksList.append(book)
+        count = count + 1
+    json_string = json.dumps(booksList)
+    return json_string
+
+
 def send_message(message,mail):
     print(message['email'])
-    msg = Message(subject="feedback for bookaholics", sender='contactbookaholics@gmail.com', recipients=['contactbookaholics@gmail.com'])
+    msg = Message(subject="feedback for bookaholics", sender='contactbooklounge@gmail.com', recipients=['contactbooklounge@gmail.com'])
     msg.body = """
           From: %s <%s>
           %s
