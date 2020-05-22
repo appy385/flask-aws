@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu
+hooks:
+  ApplicationStop:
+    - location: make kill
+      timeout: 300
+  ApplicationStart:
+    - location: make build
+      timeout: 300
+    - location: make run
+      timeout: 300
