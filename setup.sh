@@ -1,8 +1,5 @@
 #!/bin/sh
 IMAGE_NAME='gunicorn_flask'
-remove(){
-  docker image rm $IMAGE_NAME
-}
 build() {
   docker build -t $IMAGE_NAME /home/ubuntu
 }
@@ -11,7 +8,6 @@ run(){
 }
 install() {
   echo "Installing full application at once"
-  remove
   build
   run
 }
