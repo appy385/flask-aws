@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/flask-aws
+    destination: /home/ubuntu
 hooks:
   ApplicationStop:
     - location: ./stop.sh
