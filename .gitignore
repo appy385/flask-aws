@@ -4,6 +4,7 @@ __pycache__
 app/__pycache__
 /csv/books_subset.csv
 /csv/genre.csv
+Makefile
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
