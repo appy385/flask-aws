@@ -2,7 +2,10 @@
 IMAGE_NAME='gunicorn_flask'
 stop(){
   echo "Removing running container at once"
-  docker container stop $(docker container ls -aq)
+  if [ $(docker container ls -aq) > 0 ]
+  then
+    docker container stop $(docker container ls -aq)
+  fi
 }
 
 uninstall(){
