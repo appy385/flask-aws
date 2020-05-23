@@ -5,8 +5,8 @@ files:
     destination: /home/ubuntu/flask-aws
 hooks:
   ApplicationStop:
-    - location: flask-aws/stop.sh
+    - location: ./stop.sh
       timeout: 300
   ApplicationStart:
-    - location: flask-aws/setup.sh
+    - location: ./setup.sh
       timeout: 300
