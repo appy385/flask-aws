@@ -10,7 +10,7 @@ import json
 
 @application.route('/')
 def index():
-    return "<h1>WELCOME TO FLASK-AWS APP!!</h1>"
+    return "<h1>WELCOME TO FLASK-AWS APP</h1>"
 
 
 #1 Get Books Recommendation on basis of genre
