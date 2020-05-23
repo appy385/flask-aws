@@ -1,3 +1,4 @@
+#!/bin/sh
 IMAGE_NAME='gunicorn_flask'
 build() {
   docker build -t $IMAGE_NAME .
