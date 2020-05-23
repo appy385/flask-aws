@@ -4,6 +4,9 @@ files:
   - source: /
     destination: /home/ubuntu
 hooks:
+  ApplicationStop:
+    - location: ./stop.sh
+      timeout: 300
   ApplicationStart:
     - location: ./setup.sh
       timeout: 300
