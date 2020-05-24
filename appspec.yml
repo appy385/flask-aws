@@ -5,5 +5,5 @@ os: linux
 #     destination: /home/ubuntu
 hooks:
   ApplicationStart:
-    - location: flask-aws-master/setup.sh
+    - location: ./setup.sh
       timeout: 300
