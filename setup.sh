@@ -19,7 +19,7 @@ remove(){
 }
 
 build() {
-  docker build -t $IMAGE_NAME .
+  docker build -t $IMAGE_NAME  /home/ubuntu
 }
 run(){
    docker run --rm --detach --publish 80:80 $IMAGE_NAME
