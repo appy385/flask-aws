@@ -1,9 +1,9 @@
 version: 0.0
 os: linux
-files:
-  - source: /
-    destination: /home/ubuntu
+# files:
+#   - source: /
+#     destination: /home/ubuntu
 hooks:
   ApplicationStart:
-    - location: ./setup.sh
+    - location: flask-aws-master/setup.sh
       timeout: 300
