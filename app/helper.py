@@ -22,7 +22,6 @@ def parseXML(res):
 
 def parseXML1(response):
     root = ElementTree.fromstring(response.content)
-    count = 0;
     booksList = []
     for child in root.iter('book'):
         book = {}
@@ -34,9 +33,7 @@ def parseXML1(response):
         book['authors'] =''
         for subchild in child.iter('authors'):
                  book['authors']  += (((subchild.find('author')).find('name')).text) + ', '
-        if count != 0 :
-            booksList.append(book)
-        count = count + 1
+        booksList.append(book)
     json_string = json.dumps(booksList)
     return json_string
 

@@ -6,7 +6,7 @@ from sqlalchemy.sql.expression import func
 import os
 import pandas as pd
 import json
-
+path = os.path.abspath(os.path.dirname(__file__))
 
 @application.route('/')
 def index():
@@ -31,6 +31,13 @@ def contact():
         return {
             "status": {"code": 200}
         }
+
+@application.route('/title')
+def bookTitle():
+    df = pd.read_csv(path +'/csv/books.csv')
+    df.dropna(subset=['title'],inplace=True)
+    book_titles = df['title'].tolist()
+    return {"titles":book_titles}
 
 #3 Get book Recommendation on basis of your goodreads id/username
 @application.route('/goodreads_id/<username>')
