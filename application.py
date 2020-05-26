@@ -32,6 +32,7 @@ def contact():
             "status": {"code": 200}
         }
 
+#Send all book titles from book.csv
 @application.route('/title')
 def bookTitle():
     df = pd.read_csv(path +'/csv/books.csv')
@@ -89,6 +90,27 @@ def popularBooks():
     df=df[['goodreads_book_id', 'authors', 'isbn', 'title', 'average_rating', 'image_url']]
     result= df.to_json(orient='records')
     return result
+
+
+#5 Update average rating and count
+@application.route('/rating', methods=['POST'])
+def ratings():
+    if request.method=='POST':
+        isbn = request.json['isbn']
+        rating = request.json['rating']
+        book = db.session.query(Books).filter_by(isbn=isbn).all()
+        book[0].average_rating = ( book[0].average_rating*book[0].ratings_count + rating ) / (book[0].ratings_count +1)
+        book[0].ratings_count = book[0].ratings_count + 1;
+        db.session.commit()
+        return "Rated sucessfully"
+
+    else :
+        error = {  'error_message' : 'Unscuccessful attempt to rate book' }
+        return error
+
+
+# 4.77
+
 
 
 if __name__ == "__main__":

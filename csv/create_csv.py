@@ -65,14 +65,14 @@ comics.dropna(subset=['isbn','original_title'], inplace=True)
 poetry.dropna(subset=['isbn','original_title'], inplace=True)
 
 
-scifi=scifi[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url']]
-horor=horor[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url']]
-comedy=comedy[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url']]
-bio=bio[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url']]
-romance=romance[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url']]
-adventure=adventure[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url']]
-comics=comics[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url']]
-poetry=poetry[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url']]
+scifi=scifi[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url','ratings_count']]
+horor=horor[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url','ratings_count']]
+comedy=comedy[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url','ratings_count']]
+bio=bio[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url','ratings_count']]
+romance=romance[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url','ratings_count']]
+adventure=adventure[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url','ratings_count']]
+comics=comics[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url','ratings_count']]
+poetry=poetry[['goodreads_book_id','authors','isbn','original_title','average_rating','image_url','ratings_count']]
 
 
 

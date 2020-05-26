@@ -9,6 +9,7 @@ class Books(db.Model):
     title = db.Column(db.String(255), nullable = False)
     average_rating =  db.Column(db.Float, nullable = False)
     image_url = db.Column(db.String(255), nullable = False)
+    ratings_count = db.Column(db.Float, nullable = False)
 
     def __repr__(self):
         return '<Book{}>'.format(self.title)
