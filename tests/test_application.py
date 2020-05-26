@@ -1,4 +1,4 @@
-from application import application, db
+from application import application
 from app.models import Books , BookTags
 import json
 from io import BytesIO
