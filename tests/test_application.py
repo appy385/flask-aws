@@ -5,8 +5,6 @@ from io import BytesIO
 import pytest
 
 
-#Unit tests
-
 def test_index():
     response = application.test_client().get('/')
 
@@ -27,3 +25,9 @@ def test_genre():
 def test_popular():
     response = application.test_client().get('/popular')
     assert response.status_code == 200
+
+
+def test_rating():
+    with application.test_client() as c:
+        response = c.post('/rating',json={'isbn':'765326361','rating':'4'})
+        assert response.status_code == 200

@@ -96,17 +96,17 @@ def popularBooks():
 @application.route('/rating', methods=['POST'])
 def ratings():
     if request.method=='POST':
-        isbn = int(request.json['isbn'])
+        isbn = str(request.json['isbn'])
         rating = int(request.json['rating'])
         book = db.session.query(Books).filter_by(isbn=isbn).all()
-        book[0].average_rating = ( book[0].average_rating*book[0].ratings_count + rating ) / (book[0].ratings_count +1)
+        print(book)
+        book[0].average_rating = (book[0].average_rating*book[0].ratings_count + rating ) / (book[0].ratings_count +1)
         book[0].ratings_count = book[0].ratings_count + 1;
         db.session.commit()
         return "Rated sucessfully"
 
     error = {  'error_message' : 'Unscuccessful attempt to rate book' }
     return error
-
 
 
 if __name__ == "__main__":
