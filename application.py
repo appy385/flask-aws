@@ -10,7 +10,7 @@ path = os.path.abspath(os.path.dirname(__file__))
 
 @application.route('/')
 def index():
-    return "<h1>Congratulations!! TO FLASK-AWS APP</h1>"
+    return "Congratulations!! TO FLASK-AWS APP"
 
 
 #1 Get Books Recommendation on basis of genre
@@ -93,7 +93,7 @@ def popularBooks():
 
 
 #5 Update average rating and count
-@application.route('/rating', methods=['POST', 'GET'])
+@application.route('/rating', methods=['POST'])
 def ratings():
     if request.method=='POST':
         isbn = int(request.json['isbn'])
@@ -104,12 +104,8 @@ def ratings():
         db.session.commit()
         return "Rated sucessfully"
 
-    else :
-        error = {  'error_message' : 'Unscuccessful attempt to rate book' }
-        return error
-
-
-# 4.77
+    error = {  'error_message' : 'Unscuccessful attempt to rate book' }
+    return error
 
 
 
