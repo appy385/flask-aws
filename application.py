@@ -93,11 +93,11 @@ def popularBooks():
 
 
 #5 Update average rating and count
-@application.route('/rating', methods=['POST'])
+@application.route('/rating', methods=['POST', 'GET'])
 def ratings():
     if request.method=='POST':
-        isbn = request.json['isbn']
-        rating = request.json['rating']
+        isbn = int(request.json['isbn'])
+        rating = int(request.json['rating'])
         book = db.session.query(Books).filter_by(isbn=isbn).all()
         book[0].average_rating = ( book[0].average_rating*book[0].ratings_count + rating ) / (book[0].ratings_count +1)
         book[0].ratings_count = book[0].ratings_count + 1;
