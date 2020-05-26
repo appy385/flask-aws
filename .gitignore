@@ -5,7 +5,7 @@ app/__pycache__
 /csv/books_subset.csv
 /csv/genre.csv
 Makefile
-
+tests/__pycache__
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
