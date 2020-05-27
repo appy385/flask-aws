@@ -14,11 +14,11 @@ import pickle
 
 path = os.path.abspath(os.path.dirname(__file__))
 
-with open('knn_model.sav', 'rb') as f:
-    model_knn = pickle.load(f)
-
-with open('matrix.pkl', 'rb') as f:
-    user_item_matrix = pickle.load(f)
+# with open('knn_model.sav', 'rb') as f:
+#     model_knn = pickle.load(f)
+#
+# with open('matrix.pkl', 'rb') as f:
+#     user_item_matrix = pickle.load(f)
 
 @application.route('/')
 def index():
