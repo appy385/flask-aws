@@ -4,12 +4,12 @@ import json
 from io import BytesIO
 import pytest
 
-# 
-# def test_index():
-#     response = application.test_client().get('/')
-#
-#     assert response.status_code == 200
-#     assert response.data ==  b"Congratulations!! TO FLASK-AWS APP"
+
+def test_index():
+    response = application.test_client().get('/')
+
+    assert response.status_code == 200
+    assert response.data ==  b"Congratulations!! TO FLASK-AWS APP"
 
 
 def test_genre():

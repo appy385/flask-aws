@@ -22,7 +22,7 @@ path = os.path.abspath(os.path.dirname(__file__))
 
 @application.route('/')
 def index():
-    return "TO FLASK-AWS APP"
+    return "Congratulations!! TO FLASK-AWS APP"
 
 
 #1 Get Books Recommendation on basis of genre
@@ -106,6 +106,32 @@ def ratings():
     error = {  'error_message' : 'Unscuccessful attempt to rate book' }
     return error
 
+
+#7 Get book Recommendation on basis of your goodreads id/username
+@application.route('/goodreads_id/<username>')
+def goodreads(username):
+    uri = goodreads_url + username
+    response = sendRequest(uri,params)
+    books = pd.read_csv(path +'/csv/books.csv')
+    if response.status_code == 200:
+        booksDict =  parseXML(response)
+        for key, value in booksDict.items():
+            goodreads_id = int(key)
+            book = books[books['goodreads_book_id']== goodreads_id  ]
+            if not book.empty:
+                uri = test_goodreads_url + book['title']
+                response = sendRequest(uri,test_params)
+                if response.status_code==200:
+                    return parseXML1(response)
+                else: continue
+
+    elif response.status_code == 401:
+        error = { 'status': { 'code': response.status_code }, 'error_message' : 'Unauthorized access.Please Try again!' }
+        return error
+
+    else:
+        error = { 'status': { 'code': response.status_code }, 'error_message' : 'Goodreads User ID does not exist' }
+        return error
 
 
 # #7 Get book Recommendation on basis of your goodreads id/username
