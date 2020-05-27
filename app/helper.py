@@ -19,7 +19,9 @@ def parseXML(res):
 
     return book_list
 
-
+def sortSecond(val):
+    return val[1]
+    
 def parseXML1(response):
     root = ElementTree.fromstring(response.content)
     booksList = []

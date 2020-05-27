@@ -80,15 +80,16 @@ def recommendations_on_book_title(bookname):
 #5 Get Popular Books
 @application.route('/popular')
 def popularBooks():
-    path = os.path.abspath(os.path.dirname(__file__))
-    df = pd.read_csv(path +'/csv/books.csv')
-    df.dropna(subset=['original_title'],inplace=True)
-    df['weighted_rating'] = df['average_rating']*df['ratings_count']
+    books = db.session.query(Books).all()
+    data = []
+    for book in books:
+        data.append([book.isbn ,book.goodreads_book_id, book.average_rating, book.average_rating*book.ratings_count, book.title ,book.authors, book.image_url ])
+
+    df = pd.DataFrame(data, columns =['isbn','goodreads_book_id','average_rating','weighted_rating' , 'title', 'authors', 'image_url'])
     df.sort_values('weighted_rating',ascending=False,inplace=True)
     df = df[:24]
-    df=df.sample(frac=0.5)
-    df=df[['goodreads_book_id', 'authors', 'isbn', 'title', 'average_rating', 'image_url']]
-    result= df.to_json(orient='records')
+    df = df.sample(frac=0.5)
+    result = df.to_json(orient='records')
     return result
 
 
