@@ -1,12 +1,24 @@
+#virtual env
 venv
 
+#pycache
 __pycache__
 app/__pycache__
+
+#CSV files
 /csv/books_subset.csv
 /csv/genre.csv
-Makefile
+
+
+#Test-reports 
 test-reports
 tests/__pycache__
+
+
+# Model pickle files
+knn_model.sav
+matrix.pkl
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
