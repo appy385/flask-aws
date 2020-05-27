@@ -1,6 +1,7 @@
 import json
 import requests
 import xml.etree.ElementTree as ElementTree
+from flask_mail import Mail, Message
 
 def sendRequest(uri,params):
         response = requests.get(uri,params)
@@ -21,7 +22,7 @@ def parseXML(res):
 
 def sortSecond(val):
     return val[1]
-    
+
 def parseXML1(response):
     root = ElementTree.fromstring(response.content)
     booksList = []
