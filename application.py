@@ -15,7 +15,6 @@ gunicorn_logger = logging.getLogger('gunicorn.error')
 application.logger.handlers = gunicorn_logger.handlers
 application.logger.setLevel(gunicorn_logger.level)
 
-
 @application.route('/')
 def index():
     return "Congratulations!! TO FLASK-AWS APP"
