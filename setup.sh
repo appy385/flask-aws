@@ -22,7 +22,7 @@ build() {
   docker build -t $IMAGE_NAME  /home/ubuntu
 }
 run(){
-   docker run --rm --detach -v ~/home/ubuntu/logs:/app/logs --publish 80:80 $IMAGE_NAME
+   docker run --rm --detach  --publish 80:80 $IMAGE_NAME
 }
 setup() {
   echo "Installing full application at once"
