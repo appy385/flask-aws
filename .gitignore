@@ -4,13 +4,14 @@ venv
 #pycache
 __pycache__
 app/__pycache__
+*.pytest_cache
 
 #CSV files
 /csv/books_subset.csv
 /csv/genre.csv
 
 
-#Test-reports 
+#Test-reports
 test-reports
 tests/__pycache__
 
@@ -18,8 +19,3 @@ tests/__pycache__
 # Model pickle files
 knn_model.sav
 matrix.pkl
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
