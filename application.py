@@ -6,14 +6,14 @@ from sqlalchemy.sql.expression import func
 import os
 import pandas as pd
 import json
-import pickle,logging
+import pickle
 
 
 
 path = os.path.abspath(os.path.dirname(__file__))
-gunicorn_logger = logging.getLogger('gunicorn.error')
-application.logger.handlers = gunicorn_logger.handlers
-application.logger.setLevel(gunicorn_logger.level)
+# gunicorn_logger = logging.getLogger('gunicorn.error')
+# application.logger.handlers = gunicorn_logger.handlers
+# application.logger.setLevel(gunicorn_logger.level)
 
 @application.route('/')
 def index():
@@ -62,7 +62,6 @@ def recommendations_on_book_title(bookname):
 
     else:
         error = { 'status': { 'code': response.status_code }, 'error_message' : 'This bookname does not exist in goodreads' }
-        logging.error(error)
         return error
 
 
@@ -96,7 +95,6 @@ def ratings():
         return "Rated sucessfully"
 
     error = {  'error_message' : 'Unscuccessful attempt to rate book' }
-    application.logger.warning(error)
     return error
 
 
@@ -130,7 +128,6 @@ def goodreads(username):
 
     else:
         error = { 'status': { 'code': response.status_code }, 'error_message' : 'Goodreads User ID does not exist' }
-        application.logger.warning(error)
         return error
 
 
