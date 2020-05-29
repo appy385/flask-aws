@@ -1,2 +1,2 @@
 #!/bin/sh
-gunicorn --chdir app application:application -b 0.0.0.0:80
+gunicorn application:application --log-level=debug --access-logfile logs/logfile.txt -b 0.0.0.0:80
