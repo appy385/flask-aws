@@ -6,14 +6,16 @@ pipeline {
   }
   agent any
   stages {
-    stage('Unit test') {
+    stage('Unit and Functional testing') {
        steps {
-          sh 'python3 -m venv venv'
-          sh 'source venv/bin/activate'
-          sh 'pip install -r requirements.txt'
-          sh 'python -m pytest --verbose --junit-xml test-reports/results.xml'
-          sh 'deactivate'
-          sh 'rm -rf venv'
+          sh '''
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+          python -m pytest --verbose --junit-xml test-reports/results.xml
+          deactivate
+          rm -rf venv
+          '''
 
        }
     }
