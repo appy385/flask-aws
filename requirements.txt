@@ -16,7 +16,6 @@ docker==4.2.0
 docker-compose==1.25.5
 dockerpty==0.4.1
 docopt==0.6.2
-docutils==0.15.2
 Flask==1.1.2
 Flask-Cors==3.0.8
 Flask-Mail==0.9.1
