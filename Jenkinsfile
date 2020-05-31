@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Unit and Functional testing') {
        steps {
-
+          sh 'echo testing'
 
        }
     }
