@@ -8,14 +8,21 @@ pipeline {
   stages {
     stage('Unit and Functional testing') {
        steps {
-          sh 'echo testing'
+           sh '''
+           python3 -m venv venv
+           source venv/bin/activate
+           pip install -r requirements.txt
+           python -m pytest --verbose --junit-xml test-reports/results.xml
+           deactivate
+           rm -rf venv
+           '''
 
        }
     }
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build registry
+          dockerImage = docker.build registry + ":latest"
         }
       }
     }
@@ -30,7 +37,7 @@ pipeline {
     }
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi $registry"
+        sh "docker rmi $registry:latest"
       }
     }
   }

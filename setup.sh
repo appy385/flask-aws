@@ -19,7 +19,7 @@ remove(){
 }
 
 build() {
-  docker pull appy385/flask-aws
+  docker pull $IMAGE_NAME
 }
 run(){
    docker run --rm --detach  --publish 80:80 $IMAGE_NAME
