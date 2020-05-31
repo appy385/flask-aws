@@ -12,6 +12,7 @@ pipeline {
           sh 'source venv/bin/activate'
           sh 'pip install -r requirements.txt'
           sh 'python -m pytest --verbose --junit-xml test-reports/results.xml'
+          sh 'deactivate'
           sh 'rm -rf venv'
 
        }
