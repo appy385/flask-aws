@@ -1,5 +1,5 @@
 #!/bin/sh
-IMAGE_NAME='gunicorn_flask'
+IMAGE_NAME='appy385/flask-aws'
 stop(){
   if [ $(docker ps | grep $IMAGE_NAME | wc -l) -gt 0 ]
   then
@@ -19,7 +19,7 @@ remove(){
 }
 
 build() {
-  docker build -t $IMAGE_NAME  /home/ubuntu
+  docker pull appy385/flask-aws
 }
 run(){
    docker run --rm --detach  --publish 80:80 $IMAGE_NAME
