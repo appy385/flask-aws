@@ -38,7 +38,7 @@ pandas==1.0.3
 paramiko==2.7.1
 pathspec==0.5.9
 pluggy==0.13.1
-py==1.8.1
+py==1.10.0
 pyasn1==0.4.8
 pycparser==2.20
 PyMySQL==0.9.3
