@@ -32,7 +32,7 @@ joblib==0.15.1
 jsonschema==3.2.0
 MarkupSafe==1.1.1
 more-itertools==8.3.0
-numpy==1.18.4
+numpy==1.22.0
 packaging==20.4
 pandas==1.0.3
 paramiko==2.7.1
